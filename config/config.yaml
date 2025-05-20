@@ -1,0 +1,26 @@
+# Configuração principal do EVIL_JWT_FORCE
+general:
+  timeout: 10
+  retries: 3
+  threads: 5
+  user_agent: "Mozilla/5.0 (EVIL_JWT_FORCE v1.0)"
+
+jwt:
+  algorithm: "HS256"
+  mode: "bruteforce"
+  wordlist_file: "output/wordlist.txt"
+  tested_file: "output/wordlist_tested.txt"
+
+aes:
+  mode: "CBC"
+  key_length: 16
+  padding_schemes: ["PKCS7", "ISO10126", "ZeroPadding", "ANSIX923"]
+
+paths:
+  report_html: "reports/report.html"
+  intercepted_tokens: "output/intercepted_tokens.txt"
+
+proxy:
+  use_proxy: true
+  rotate_proxies: true
+  proxy_list: "config/proxies.txt"

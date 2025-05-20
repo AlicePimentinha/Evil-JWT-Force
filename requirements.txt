@@ -1,0 +1,33 @@
+# Core dependencies
+requests>=2.25.0
+pyjwt>=2.4.0
+cryptography>=3.4.7
+termcolor>=1.1.0
+colorama>=0.4.4
+beautifulsoup4>=4.9.3
+lxml>=4.9.0
+fake-useragent>=1.5.1
+httpx>=0.24.0
+pycryptodome>=3.10.1
+PyYAML>=5.4.1
+
+# HTTP and proxy handling
+aiohttp>=3.8.1
+urllib3>=1.26.7
+
+# JWT specific
+ecdsa>=0.17.0
+rsa>=4.7.2
+python-jose>=3.3.0
+
+# Database and SQL
+sqlalchemy>=1.4.23
+psycopg2-binary>=2.9.1
+
+# Testing and development
+pytest>=6.2.5
+pytest-cov>=2.12.1
+
+# Additional dependencies
+tqdm>=4.62.0
+python-dotenv>=0.19.0
