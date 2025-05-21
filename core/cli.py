@@ -62,7 +62,16 @@ def run_automatic_mode():
 def run_manual_mode():
     print("\n📦 Módulos disponíveis:")
     steps = {
-        "1": ("auth.py", auth.run),
+        "1": ("Autenticação", {
+            "1": "JWT (Padrão)",
+            "2": "Basic Auth",
+            "3": "Bearer Token",
+            "4": "API Key",
+            "5": "OAuth 2.0",
+            "6": "Digest Auth",
+            "7": "NTLM",
+            "8": "Voltar"
+        }),
         "2": ("wordlist_generator.py", wordlist_generator.run),
         "3": ("bruteforce.py", bruteforce.run),
         "4": ("aes_decrypt.py", aes_decrypt.run),
@@ -72,20 +81,33 @@ def run_manual_mode():
         "8": ("Voltar", None)
     }
 
-    for k, (label, _) in steps.items():
-        print(f"[{k}] {label}")
-
     while True:
+        for k, (label, value) in steps.items():
+            if isinstance(value, dict):
+                print(f"[{k}] {label} (Múltiplos métodos)")
+            else:
+                print(f"[{k}] {label}")
+
         choice = input("\nEscolha o módulo a executar: ").strip()
         if choice in steps:
             if choice == "8":
                 break
-            print(f"\n▶ Executando {steps[choice][0]}...\n")
-            try:
-                steps[choice][1]()
-                print(f"✅ {steps[choice][0]} finalizado.\n")
-            except Exception as e:
-                print(f"❌ Erro no módulo {steps[choice][0]}: {e}\n")
+            elif choice == "1":
+                print("\nMétodos de Autenticação disponíveis:")
+                for k, v in steps["1"][1].items():
+                    print(f"[{k}] {v}")
+                auth_method = input("\nEscolha o método de autenticação: ").strip()
+                if auth_method in steps["1"][1]:
+                    if auth_method == "8":
+                        continue
+                    auth.run(auth_method=steps["1"][1][auth_method].lower().replace(" ", "_"))
+            else:
+                print(f"\n▶ Executando {steps[choice][0]}...\n")
+                try:
+                    steps[choice][1]()
+                    print(f"✅ {steps[choice][0]} finalizado.\n")
+                except Exception as e:
+                    print(f"❌ Erro no módulo {steps[choice][0]}: {e}\n")
         else:
             print("❌ Opção inválida. Tente novamente.")
 

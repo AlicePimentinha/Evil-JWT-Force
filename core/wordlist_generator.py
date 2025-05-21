@@ -73,11 +73,22 @@ class WordlistGenerator:
 
     def scrape_public_sites(self):
         sources = [
+            # Sites governamentais
             "https://www.gov.br/", "https://www.tse.jus.br/", 
-            "https://pt.wikipedia.org/wiki/Brasil",
             "https://www.usa.gov/", "https://www.europa.eu/",
-            "https://www.un.org/"
+            # Sites organizacionais
+            "https://www.un.org/", "https://www.who.int/",
+            "https://www.unicef.org/", "https://www.amnesty.org/",
+            # Redes sociais
+            "https://www.facebook.com", "https://www.instagram.com",
+            "https://www.linkedin.com", "https://www.twitter.com",
+            "https://www.youtube.com", "https://www.reddit.com",
+            "https://www.pinterest.com", "https://www.tiktok.com",
+            # Plataformas técnicas
+            "https://www.github.com", "https://www.gitlab.com",
+            "https://www.bitbucket.org", "https://www.stackoverflow.com"
         ]
+        
         for url in sources:
             try:
                 response = requests.get(url, headers={'User-Agent': self.ua.random}, timeout=10)
@@ -92,7 +103,11 @@ class WordlistGenerator:
         platforms = [
             "site:facebook.com", "site:instagram.com", "site:x.com", 
             "site:youtube.com", "site:threads.net", "site:tiktok.com",
-            "site:.gov", "site:.org"
+            "site:linkedin.com", "site:github.com", "site:gitlab.com",
+            "site:bitbucket.org", "site:stackoverflow.com",
+            "site:reddit.com", "site:pinterest.com",
+            "site:tumblr.com", "site:medium.com",
+            "site:.gov", "site:.org", "site:.edu"
         ]
         for q in queries:
             for p in platforms:

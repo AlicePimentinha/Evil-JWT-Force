@@ -1,346 +1,284 @@
 # EVIL_JWT_FORCE/gui/interface.py
 import tkinter as tk
-from tkinter import ttk, messagebox
-from typing import Dict, Any
-import json
+from tkinter import ttk, messagebox, filedialog
+import subprocess
 import sys
 import os
-import subprocess
 from pathlib import Path
 
-# Adiciona o diretório raiz ao PYTHONPATH
-sys.path.append(str(Path(__file__).parent.parent))
+class ModuleDialog:
+    def __init__(self, parent, title, fields):
+        self.dialog = tk.Toplevel(parent)
+        self.dialog.title(title)
+        self.dialog.geometry("500x400")
+        self.dialog.configure(bg="#1e1e1e")
+        self.dialog.transient(parent)
+        self.dialog.grab_set()
+        
+        # Frame para os campos
+        self.frame = tk.Frame(self.dialog, bg="#1e1e1e")
+        self.frame.pack(expand=True, fill='both', padx=20, pady=20)
+        
+        # Dicionário para armazenar as entradas
+        self.entries = {}
+        
+        # Criar campos
+        for i, (label, field_type) in enumerate(fields.items()):
+            tk.Label(self.frame, text=label, bg="#1e1e1e", fg="white").grid(row=i, column=0, pady=5, sticky='w')
+            
+            if field_type == "entry":
+                self.entries[label] = tk.Entry(self.frame, bg="#2e2e2e", fg="white", width=40)
+                self.entries[label].grid(row=i, column=1, pady=5, padx=10)
+            elif field_type == "file":
+                frame = tk.Frame(self.frame, bg="#1e1e1e")
+                frame.grid(row=i, column=1, pady=5, sticky='w')
+                self.entries[label] = tk.Entry(frame, bg="#2e2e2e", fg="white", width=32)
+                self.entries[label].pack(side=tk.LEFT, padx=(0,5))
+                browse_btn = tk.Button(frame, text="...", command=lambda l=label: self.browse_file(l))
+                browse_btn.pack(side=tk.LEFT)
+            elif isinstance(field_type, list):
+                self.entries[label] = ttk.Combobox(self.frame, values=field_type, width=37)
+                self.entries[label].grid(row=i, column=1, pady=5, padx=10)
+                self.entries[label].set(field_type[0])
+        
+        # Botão de iniciar
+        self.start_button = tk.Button(self.dialog, text="Iniciar Ataque", 
+                                    command=self.start_attack,
+                                    bg="#ff3c00", fg="white",
+                                    font=("Arial", 10, "bold"))
+        self.start_button.pack(pady=20)
 
-from core.auth import Authenticator
-from core.bruteforce import JWTBruteforcer
-from utils.helpers import save_to_file
-from config.constants import JWT_ALGORITHMS
+    def browse_file(self, field_label):
+        filename = filedialog.askopenfilename()
+        if filename:
+            self.entries[field_label].delete(0, tk.END)
+            self.entries[field_label].insert(0, filename)
+
+    def start_attack(self):
+        values = {label: entry.get() for label, entry in self.entries.items()}
+        print("Iniciando ataque com parâmetros:", values)
+        self.dialog.destroy()
 
 class EvilJWTGUI:
     def __init__(self, master):
         self.master = master
         master.title("EVIL_JWT_FORCE")
-        master.geometry("500x350")
+        master.geometry("600x400")
         master.configure(bg="#1e1e1e")
 
-        # Configuração do estilo dos botões
-        self.configure_styles()
+        # Frame principal
+        self.main_frame = tk.Frame(master, bg="#1e1e1e")
+        self.main_frame.pack(expand=True, fill='both')
+
+        # Menu manual frame
+        self.manual_frame = tk.Frame(master, bg="#1e1e1e")
 
         # Nome do programa
-        self.title_label = tk.Label(master, text="🔥 EVIL_JWT_FORCE 🔥", fg="orange", bg="#1e1e1e", font=("Arial", 18, "bold"))
+        self.title_label = tk.Label(self.main_frame, text="🔥 EVIL_JWT_FORCE 🔥", 
+                                  fg="orange", bg="#1e1e1e", 
+                                  font=("Arial", 18, "bold"))
         self.title_label.pack(pady=20)
 
-        # Frame para os botões
-        button_frame = tk.Frame(master, bg="#1e1e1e")
-        button_frame.pack(pady=10)
-
-        # Botões
-        self.create_buttons(button_frame)
-
-    def configure_styles(self):
-        # Configuração de estilo para os botões
-        style = ttk.Style()
-        style.configure("Custom.TButton",
-                       padding=10,
-                       font=("Arial", 12))
-
-    def create_buttons(self, frame):
-        # Botão: Modo Automático
-        self.auto_button = tk.Button(frame,
-                                   text="Modo Automático",
-                                   command=self.run_auto_mode,
-                                   width=25,
-                                   bg="#444",
-                                   fg="white",
-                                   font=("Arial", 12),
-                                   activebackground="#666",
-                                   activeforeground="white")
+        # Botões do menu principal
+        self.auto_button = tk.Button(self.main_frame, text="Modo Automático",
+                                   command=self.run_auto_mode, width=25,
+                                   bg="#444", fg="white", font=("Arial", 12))
         self.auto_button.pack(pady=10)
 
-        # Botão: Modo Manual
-        self.manual_button = tk.Button(frame,
-                                     text="Modo Manual",
-                                     command=self.run_manual_mode,
-                                     width=25,
-                                     bg="#444",
-                                     fg="white",
-                                     font=("Arial", 12),
-                                     activebackground="#666",
-                                     activeforeground="white")
+        self.manual_button = tk.Button(self.main_frame, text="Modo Manual",
+                                     command=self.show_manual_menu, width=25,
+                                     bg="#444", fg="white", font=("Arial", 12))
         self.manual_button.pack(pady=10)
 
-        # Botão: Sair
-        self.quit_button = tk.Button(frame,
-                                   text="Sair",
-                                   command=self.master.quit,
-                                   width=25,
-                                   bg="#aa0000",
-                                   fg="white",
-                                   font=("Arial", 12, "bold"),
-                                   activebackground="#cc0000",
-                                   activeforeground="white")
+        self.quit_button = tk.Button(self.main_frame, text="Sair",
+                                   command=master.quit, width=25,
+                                   bg="#aa0000", fg="white", font=("Arial", 12, "bold"))
         self.quit_button.pack(pady=20)
 
+        # Configuração do menu manual
+        self.setup_manual_menu()
+
+        # Definição dos campos para cada módulo
+        self.module_fields = {
+            "auth.py": {
+                "URL do Alvo": "entry",
+                "Arquivo de Credenciais": "file",
+                "Método de Autenticação": [
+                    "JWT", "Basic", "Bearer", "OAuth2", "API Key",
+                    "Digest", "NTLM", "Kerberos", "SAML",
+                    "OpenID Connect", "HMAC", "Custom"
+                ],
+                "Timeout (segundos)": "entry",
+                "Headers Customizados": "entry"
+            },
+            "wordlist_generator.py": {
+                "Arquivo de Base": "file",
+                "URL do Alvo": "entry",
+                "Arquivo de Saída": "entry",
+                "Mínimo de Caracteres": "entry",
+                "Máximo de Caracteres": "entry",
+                "Fontes de Dados": ["DuckDuckGo", "GitHub", "LinkedIn", "Facebook",
+                                  "Twitter", "Instagram", "Reddit", "Sites .gov",
+                                  "Sites .org", "Sites .edu"],
+                "Profundidade de Busca": "entry",
+                "Filtros Customizados": "entry"
+            },
+            "bruteforce.py": {
+                "Tipo de Token": ["JWT", "OAuth", "Basic Auth", "Bearer", "API Key",
+                                "Session Token", "SAML", "Custom Token"],
+                "Token/Hash": "entry",
+                "Wordlist": "file",
+                "Método de Ataque": ["Força Bruta", "Dicionário", "Híbrido"],
+                "Threads": "entry",
+                "Timeout por Tentativa": "entry",
+                "Alvo de Ataque": ["Token", "Login", "Verificação Única"]
+            },
+            "aes_decrypt.py": {
+                "Arquivo de Tokens": "file",
+                "Chave AES (opcional)": "entry",
+                "Modo de Operação": ["CBC", "ECB", "CFB", "OFB"],
+                "Arquivo de Saída": "entry"
+            },
+            "sql_injector.py": {
+                "URL do Alvo": "entry",
+                "Parâmetros": "entry",
+                "Método": ["GET", "POST"],
+                "Payload Customizado": "entry"
+            },
+            "sentry_simulator.py": {
+                "Porta de Escuta": "entry",
+                "Interface": "entry",
+                "Arquivo de Log": "entry",
+                "Modo de Captura": ["Passivo", "Ativo"]
+            },
+            "report.py": {
+                "Diretório de Logs": "file",
+                "Template": ["HTML", "PDF", "TXT"],
+                "Arquivo de Saída": "entry"
+            }
+        }
+
+    def setup_manual_menu(self):
+        # Título do menu manual
+        self.manual_title = tk.Label(self.manual_frame, 
+                                   text="🛠️ Menu Manual 🛠️",
+                                   fg="orange", bg="#1e1e1e",
+                                   font=("Arial", 16, "bold"))
+        self.manual_title.pack(pady=10)
+
+        # Lista de módulos disponíveis
+        self.modules = {
+            "1. Autenticação": "auth.py",
+            "2. Gerador de Wordlist": "wordlist_generator.py",
+            "3. Força Bruta JWT": "bruteforce.py",
+            "4. Descriptografia AES": "aes_decrypt.py",
+            "5. Injeção SQL": "sql_injector.py",
+            "6. Simulador Sentry": "sentry_simulator.py",
+            "7. Gerar Relatório": "report.py"
+        }
+
+        # Criar botões para cada módulo
+        for module_name, module_file in self.modules.items():
+            btn = tk.Button(self.manual_frame,
+                          text=module_name,
+                          command=lambda m=module_file: self.run_module(m),
+                          width=30,
+                          bg="#444",
+                          fg="white",
+                          font=("Arial", 10))
+            btn.pack(pady=5)
+
+        # Botão voltar
+        self.back_button = tk.Button(self.manual_frame,
+                                   text="Voltar ao Menu Principal",
+                                   command=self.show_main_menu,
+                                   width=30,
+                                   bg="#666",
+                                   fg="white",
+                                   font=("Arial", 10, "bold"))
+        self.back_button.pack(pady=20)
+
+    def show_manual_menu(self):
+        self.main_frame.pack_forget()
+        self.manual_frame.pack(expand=True, fill='both')
+
+    def show_main_menu(self):
+        self.manual_frame.pack_forget()
+        self.main_frame.pack(expand=True, fill='both')
+
     def run_auto_mode(self):
+        AutoDialog(self.master)
         self.execute_cli("--auto")
 
-    def run_manual_mode(self):
-        self.execute_cli("--manual")
+    def run_module(self, module_name):
+        if module_name in self.module_fields:
+            ModuleDialog(self.master, f"Configurar {module_name}", self.module_fields[module_name])
+        else:
+            messagebox.showerror("Erro", f"Configuração não encontrada para o módulo: {module_name}")
 
     def execute_cli(self, mode_flag):
         cli_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../core/cli.py"))
-
         if not os.path.exists(cli_path):
             messagebox.showerror("Erro", f"Arquivo CLI não encontrado: {cli_path}")
             return
-
         try:
             subprocess.Popen([sys.executable, cli_path, mode_flag])
-            messagebox.showinfo("Execução", f"Módulo {mode_flag.replace('--', '').capitalize()} iniciado com sucesso!")
+            messagebox.showinfo("Execução", f"Módulo {mode_flag.replace('--', '').capitalize()} iniciado.")
         except Exception as e:
-            messagebox.showerror("Erro", f"Falha ao executar CLI: {str(e)}")
+            messagebox.showerror("Erro", f"Falha ao executar CLI: {e}")
 
-class StepByStepGUI:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("EVIL JWT FORCE - Manual Mode")
-        self.root.geometry("800x600")
+class AutoDialog:
+    def __init__(self, parent):
+        self.dialog = tk.Toplevel(parent)
+        self.dialog.title("Modo Automático")
+        self.dialog.geometry("400x200")
+        self.dialog.configure(bg="#1e1e1e")
+        self.dialog.transient(parent)
+        self.dialog.grab_set()
         
-        # Store user inputs across steps
-        self.user_inputs = {}
-        self.current_step = 0
+        # Frame para os campos
+        self.frame = tk.Frame(self.dialog, bg="#1e1e1e")
+        self.frame.pack(expand=True, fill='both', padx=20, pady=20)
         
-        # Configure style
-        style = ttk.Style()
-        style.configure("Title.TLabel", font=("Helvetica", 16, "bold"))
-        style.configure("Step.TLabel", font=("Helvetica", 12))
+        # Label e campo para URL
+        tk.Label(
+            self.frame, 
+            text="URL do Alvo:", 
+            bg="#1e1e1e", 
+            fg="white",
+            font=("Arial", 10)
+        ).pack(pady=5)
         
-        # Create main frame
-        self.main_frame = ttk.Frame(self.root, padding="20")
-        self.main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        self.url_entry = tk.Entry(
+            self.frame,
+            bg="#2e2e2e",
+            fg="white",
+            width=40,
+            font=("Arial", 10)
+        )
+        self.url_entry.pack(pady=10)
         
-        # Initialize steps
-        self.steps = [
-            self.create_target_step,
-            self.create_algorithm_step,
-            self.create_payload_step,
-            self.create_wordlist_step,
-            self.create_confirmation_step
-        ]
-        
-        # Create navigation buttons
-        self.btn_frame = ttk.Frame(self.main_frame)
-        self.btn_frame.grid(row=1, column=0, pady=20)
-        
-        self.prev_btn = ttk.Button(self.btn_frame, text="Previous", command=self.prev_step)
-        self.prev_btn.grid(row=0, column=0, padx=5)
-        
-        self.next_btn = ttk.Button(self.btn_frame, text="Next", command=self.next_step)
-        self.next_btn.grid(row=0, column=1, padx=5)
-        
-        # Show first step
-        self.show_step(0)
-    
-    def create_target_step(self) -> ttk.Frame:
-        frame = ttk.Frame(self.main_frame)
-        
-        # Title
-        title = ttk.Label(frame, text="Step 1: Target Configuration", style="Title.TLabel")
-        title.grid(row=0, column=0, pady=(0, 20))
-        
-        # Target URL
-        ttk.Label(frame, text="Target URL:", style="Step.TLabel").grid(row=1, column=0, pady=5)
-        self.url_entry = ttk.Entry(frame, width=50)
-        self.url_entry.grid(row=2, column=0, pady=5)
-        if 'target_url' in self.user_inputs:
-            self.url_entry.insert(0, self.user_inputs['target_url'])
-            
-        # Proxy Configuration
-        ttk.Label(frame, text="Proxy (optional):", style="Step.TLabel").grid(row=3, column=0, pady=5)
-        self.proxy_entry = ttk.Entry(frame, width=50)
-        self.proxy_entry.grid(row=4, column=0, pady=5)
-        if 'proxy' in self.user_inputs:
-            self.proxy_entry.insert(0, self.user_inputs['proxy'])
-        
-        return frame
-    
-    def create_algorithm_step(self) -> ttk.Frame:
-        frame = ttk.Frame(self.main_frame)
-        
-        # Title
-        title = ttk.Label(frame, text="Step 2: JWT Algorithm Selection", style="Title.TLabel")
-        title.grid(row=0, column=0, pady=(0, 20))
-        
-        # Algorithm Selection
-        ttk.Label(frame, text="Select JWT Algorithm:", style="Step.TLabel").grid(row=1, column=0, pady=5)
-        self.algo_var = tk.StringVar(value=self.user_inputs.get('algorithm', 'HS256'))
-        for i, algo in enumerate(JWT_ALGORITHMS):
-            ttk.Radiobutton(frame, text=algo, variable=self.algo_var, value=algo).grid(row=i+2, column=0, pady=2)
-        
-        return frame
-    
-    def create_payload_step(self) -> ttk.Frame:
-        frame = ttk.Frame(self.main_frame)
-        
-        # Title
-        title = ttk.Label(frame, text="Step 3: JWT Payload Configuration", style="Title.TLabel")
-        title.grid(row=0, column=0, pady=(0, 20))
-        
-        # Payload Editor
-        ttk.Label(frame, text="Enter JWT Payload (JSON):", style="Step.TLabel").grid(row=1, column=0, pady=5)
-        self.payload_text = tk.Text(frame, width=50, height=10)
-        self.payload_text.grid(row=2, column=0, pady=5)
-        
-        default_payload = {
-            "sub": "1234567890",
-            "name": "Test User",
-            "iat": 1516239022
-        }
-        
-        if 'payload' in self.user_inputs:
-            self.payload_text.insert('1.0', json.dumps(self.user_inputs['payload'], indent=2))
-        else:
-            self.payload_text.insert('1.0', json.dumps(default_payload, indent=2))
-        
-        return frame
-    
-    def create_wordlist_step(self) -> ttk.Frame:
-        frame = ttk.Frame(self.main_frame)
-        
-        # Title
-        title = ttk.Label(frame, text="Step 4: Wordlist Configuration", style="Title.TLabel")
-        title.grid(row=0, column=0, pady=(0, 20))
-        
-        # Wordlist Options
-        ttk.Label(frame, text="Select Wordlist Source:", style="Step.TLabel").grid(row=1, column=0, pady=5)
-        
-        self.wordlist_var = tk.StringVar(value=self.user_inputs.get('wordlist_type', 'default'))
-        ttk.Radiobutton(frame, text="Use Default Wordlist", variable=self.wordlist_var, 
-                       value="default").grid(row=2, column=0, pady=2)
-        ttk.Radiobutton(frame, text="Custom Wordlist", variable=self.wordlist_var, 
-                       value="custom").grid(row=3, column=0, pady=2)
-        
-        ttk.Label(frame, text="Custom Wordlist Path (optional):", style="Step.TLabel").grid(row=4, column=0, pady=5)
-        self.wordlist_entry = ttk.Entry(frame, width=50)
-        self.wordlist_entry.grid(row=5, column=0, pady=5)
-        if 'wordlist_path' in self.user_inputs:
-            self.wordlist_entry.insert(0, self.user_inputs['wordlist_path'])
-        
-        return frame
-    
-    def create_confirmation_step(self) -> ttk.Frame:
-        frame = ttk.Frame(self.main_frame)
-        
-        # Title
-        title = ttk.Label(frame, text="Step 5: Confirmation", style="Title.TLabel")
-        title.grid(row=0, column=0, pady=(0, 20))
-        
-        # Summary
-        summary_text = tk.Text(frame, width=50, height=15, wrap=tk.WORD)
-        summary_text.grid(row=1, column=0, pady=5)
-        summary_text.insert('1.0', self.get_summary())
-        summary_text.config(state='disabled')
-        
-        # Start Button
-        self.start_btn = ttk.Button(frame, text="Start Attack", command=self.start_attack)
-        self.start_btn.grid(row=2, column=0, pady=20)
-        
-        return frame
-    
-    def get_summary(self) -> str:
-        summary = "Attack Configuration Summary:\n\n"
-        summary += f"Target URL: {self.user_inputs.get('target_url', 'Not set')}\n"
-        summary += f"Proxy: {self.user_inputs.get('proxy', 'None')}\n"
-        summary += f"Algorithm: {self.user_inputs.get('algorithm', 'HS256')}\n"
-        summary += f"Wordlist: {self.user_inputs.get('wordlist_type', 'default')}\n"
-        if self.user_inputs.get('wordlist_type') == 'custom':
-            summary += f"Wordlist Path: {self.user_inputs.get('wordlist_path', 'Not set')}\n"
-        return summary
-    
-    def show_step(self, step_num: int):
-        # Clear current step
-        for widget in self.main_frame.winfo_children():
-            if widget != self.btn_frame:
-                widget.destroy()
-        
-        # Show new step
-        frame = self.steps[step_num]()
-        frame.grid(row=0, column=0)
-        
-        # Update button states
-        self.prev_btn.config(state='normal' if step_num > 0 else 'disabled')
-        self.next_btn.config(text="Start" if step_num == len(self.steps)-1 else "Next")
-    
-    def save_current_step(self):
-        if self.current_step == 0:
-            self.user_inputs['target_url'] = self.url_entry.get()
-            self.user_inputs['proxy'] = self.proxy_entry.get()
-        elif self.current_step == 1:
-            self.user_inputs['algorithm'] = self.algo_var.get()
-        elif self.current_step == 2:
-            try:
-                payload_text = self.payload_text.get('1.0', tk.END).strip()
-                self.user_inputs['payload'] = json.loads(payload_text)
-            except json.JSONDecodeError:
-                messagebox.showerror("Error", "Invalid JSON payload")
-                return False
-        elif self.current_step == 3:
-            self.user_inputs['wordlist_type'] = self.wordlist_var.get()
-            self.user_inputs['wordlist_path'] = self.wordlist_entry.get()
-        return True
-    
-    def next_step(self):
-        if not self.save_current_step():
+        # Botão de iniciar ataque
+        self.start_button = tk.Button(
+            self.frame,
+            text="Iniciar Ataque Automático",
+            command=self.start_auto_attack,
+            bg="#ff3c00",
+            fg="white",
+            font=("Arial", 10, "bold")
+        )
+        self.start_button.pack(pady=20)
+
+    def start_auto_attack(self):
+        url = self.url_entry.get().strip()
+        if not url:
+            messagebox.showerror("Erro", "Por favor, insira uma URL válida")
             return
         
-        if self.current_step < len(self.steps) - 1:
-            self.current_step += 1
-            self.show_step(self.current_step)
-    
-    def prev_step(self):
-        if self.current_step > 0:
-            self.current_step -= 1
-            self.show_step(self.current_step)
-    
-    def start_attack(self):
-        if not self.save_current_step():
-            return
-            
-        # Save configuration
-        config = {
-            "target_url": self.user_inputs['target_url'],
-            "proxy": self.user_inputs['proxy'] if self.user_inputs['proxy'] else None,
-            "algorithm": self.user_inputs['algorithm'],
-            "payload": self.user_inputs['payload'],
-            "wordlist": {
-                "type": self.user_inputs['wordlist_type'],
-                "path": self.user_inputs['wordlist_path'] if self.user_inputs['wordlist_type'] == 'custom' else None
-            }
-        }
-        
-        save_to_file("config/manual_config.json", json.dumps(config, indent=2))
-        
-        # Start the attack
-        try:
-            bruteforcer = JWTBruteforcer(config)
-            bruteforcer.start()
-            messagebox.showinfo("Success", "Attack started successfully!")
-        except Exception as e:
-            messagebox.showerror("Error", f"Failed to start attack: {str(e)}")
-
-def launch_gui():
-    root = tk.Tk()
-    app = EvilJWTGUI(root)
-    root.mainloop()
-
-if __name__ == "__main__":
-    launch_gui()
-    app = StepByStepGUI(root)
-    root.mainloop()
+        print(f"Iniciando ataque automático na URL: {url}")
+        self.dialog.destroy()
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = EvilJWTGUI(root)
-    root.mainloop()
-    app = StepByStepGUI(root)
     root.mainloop()

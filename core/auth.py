@@ -17,10 +17,31 @@ class Authenticator:
         self.url = url
         self.client = httpx.Client(proxies=proxy, verify=False, timeout=15.0)
         
-    def authenticate(self, username: str, password: str) -> bool:
+    def authenticate(self, username: str, password: str, auth_method: str = "jwt") -> bool:
         try:
             headers = build_headers()
             payload = build_payload(username, password)
+            
+            # Adiciona diferentes métodos de autenticação
+            if auth_method == "basic":
+                auth_string = base64.b64encode(f"{username}:{password}".encode()).decode()
+                headers["Authorization"] = f"Basic {auth_string}"
+            elif auth_method == "bearer":
+                headers["Authorization"] = f"Bearer {password}"
+            elif auth_method == "api_key":
+                headers["X-API-Key"] = password
+            elif auth_method == "oauth":
+                headers["Authorization"] = f"OAuth {password}"
+            elif auth_method == "digest":
+                # Implementação do Digest Auth
+                nonce = self._get_nonce()
+                digest = self._calculate_digest(username, password, nonce)
+                headers["Authorization"] = f"Digest {digest}"
+            elif auth_method == "ntlm":
+                # Implementação do NTLM
+                ntlm_hash = self._calculate_ntlm(username, password)
+                headers["Authorization"] = f"NTLM {ntlm_hash}"
+            
             response = self.client.post(self.url, headers=headers, data=payload)
             
             if response.status_code == 200:
@@ -97,3 +118,11 @@ def auto_discovery(base_url: str, endpoints: List[str]) -> List[Tuple[str, str]]
         except Exception as e:
             print(f"[ERROR] Could not fetch {endpoint}: {e}")
     return found_creds
+
+    def _calculate_digest(self, username: str, password: str, nonce: str) -> str:
+        ha1 = hashlib.md5(f"{username}:{password}".encode()).hexdigest()
+        ha2 = hashlib.md5(b"POST:/auth").hexdigest()
+        return hashlib.md5(f"{ha1}:{nonce}:{ha2}".encode()).hexdigest()
+        
+    def _calculate_ntlm(self, username: str, password: str) -> str:
+        return hashlib.new('md4', password.encode('utf-16le')).hexdigest()
