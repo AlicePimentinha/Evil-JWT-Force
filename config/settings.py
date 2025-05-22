@@ -21,7 +21,7 @@ CONFIG = {
 DEFAULT_CONFIG = {
     "target_url": "",
     "threads": 10,
-    "proxy": "http://127.0.0.1:8080",
+    "proxy": "http://127.0.0.1:8082",
     "timeout": 10,
     "user_agent": "EVIL-JWT-FORCE/1.0",
     "wordlist": "data/wordlist.txt",

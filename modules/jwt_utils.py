@@ -30,7 +30,7 @@ def extract_parts(token: str):
         cprint(f"[x] Token inválido: {e}", "red")
         return None
 
-def generate_token(payload: dict, secret: str, algorithm: str = JWT_ALGORITHM):
+def generate_token(payload: dict, secret: str, algorithm: str = "HS256"):
     try:
         return jwt.encode(payload, secret, algorithm=algorithm)
     except Exception as e:

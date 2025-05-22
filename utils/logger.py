@@ -1,46 +1,65 @@
+"""
+Módulo de logging customizado
+"""
+
+import os
 import logging
-from datetime import datetime
 from pathlib import Path
-from config.constants import LOG_DIR, COLORS
+from datetime import datetime
 
-class CustomFormatter(logging.Formatter):
-    def __init__(self):
-        super().__init__(
-            fmt="%(asctime)s - %(levelname)s - %(message)s",
-            datefmt="%Y-%m-%d %H:%M:%S"
-        )
+# Configurações de cores
+COLORS = {
+    'SUCCESS': '\033[92m',
+    'WARNING': '\033[93m',
+    'ERROR': '\033[91m',
+    'INFO': '\033[94m',
+    'RESET': '\033[0m'
+}
+
+# Configuração do diretório de logs
+LOG_DIR = Path(__file__).resolve().parent.parent / "logs"
+
+def setup_logger(name: str = "EVIL_JWT_FORCE") -> logging.Logger:
+    """
+    Configura e retorna um logger customizado
+    
+    Args:
+        name: Nome do logger
         
-    def format(self, record):
-        if record.levelno == logging.INFO:
-            record.msg = f"{COLORS['info']}{record.msg}{COLORS['reset']}"
-        elif record.levelno == logging.WARNING:
-            record.msg = f"{COLORS['warning']}{record.msg}{COLORS['reset']}"
-        elif record.levelno == logging.ERROR:
-            record.msg = f"{COLORS['error']}{record.msg}{COLORS['reset']}"
-        elif record.levelno == logging.CRITICAL:
-            record.msg = f"{COLORS['error']}[CRÍTICO] {record.msg}{COLORS['reset']}"
-        return super().format(record)
-
-def setup_logger(name="evil_jwt_force"):
+    Returns:
+        Logger configurado
+    """
+    # Criar diretório de logs se não existir
+    os.makedirs(LOG_DIR, exist_ok=True)
+    
+    # Configurar logger
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
     
-    # Criar diretório de logs se não existir
-    LOG_DIR.mkdir(parents=True, exist_ok=True)
-    
-    # Handler para arquivo
-    file_handler = logging.FileHandler(LOG_DIR / f"{name}_{datetime.now():%Y%m%d}.log")
-    file_handler.setFormatter(logging.Formatter(
-        "%(asctime)s - %(levelname)s - %(message)s"
-    ))
-    
-    # Handler para console
-    console_handler = logging.StreamHandler()
-    console_handler.setFormatter(CustomFormatter())
-    
-    logger.addHandler(file_handler)
-    logger.addHandler(console_handler)
+    # Evitar handlers duplicados
+    if not logger.handlers:
+        # Handler para arquivo
+        log_file = LOG_DIR / f"{name}_{datetime.now().strftime('%Y%m%d')}.log"
+        file_handler = logging.FileHandler(log_file, encoding='utf-8')
+        file_handler.setLevel(logging.INFO)
+        
+        # Handler para console
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        
+        # Formatação
+        formatter = logging.Formatter(
+            '[%(asctime)s] [%(levelname)s] %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        )
+        
+        file_handler.setFormatter(formatter)
+        console_handler.setFormatter(formatter)
+        
+        logger.addHandler(file_handler)
+        logger.addHandler(console_handler)
     
     return logger
 
+# Criar logger global
 logger = setup_logger()

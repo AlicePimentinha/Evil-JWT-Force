@@ -1,17 +1,16 @@
-# utils/osint_scraper.py
-
 import requests
 from bs4 import BeautifulSoup
 import re
-import random
-from utils.helpers import save_to_file
+from fake_useragent import UserAgent
+from .helpers import save_to_file
 
 class OSINTScraper:
     def __init__(self, terms, output_path="output/osint_terms.txt"):
         self.terms = terms
         self.output_path = output_path
+        self.ua = UserAgent()
         self.headers = {
-            "User-Agent": "Mozilla/5.0"
+            "User-Agent": self.ua.random
         }
 
     def duckduckgo_search(self, term):

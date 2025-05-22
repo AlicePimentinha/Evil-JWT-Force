@@ -24,3 +24,27 @@ proxy:
   use_proxy: true
   rotate_proxies: true
   proxy_list: "config/proxies.txt"
+
+auto_discovery:
+  enabled: true
+  scan_depth: 3
+  timeout_per_request: 5
+  common_endpoints:
+    - "/api/auth"
+    - "/api/login"
+    - "/auth/token"
+    - "/oauth/token"
+    - "/api/v1/auth"
+    - "/api/v2/auth"
+    - "/auth/jwt"
+    - "/login"
+    - "/admin/login"
+    - "/user/login"
+  methods:
+    - "GET"
+    - "POST"
+  headers:
+    Content-Type: "application/json"
+    Accept: "application/json"
+  save_results: true
+  output_file: "output/discovered_endpoints.txt"

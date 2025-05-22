@@ -86,7 +86,7 @@ class SQLInjector:
                         }
                         self.successful_injections.append(injection_info)
                         logger.info(f"✅ Possível injeção bem sucedida!\nPayload: {payload}")
-                        save_to_output("successful_injections.txt", json.dumps(injection_info))
+                        save_to_file("output/successful_injections.txt", json.dumps(injection_info))
                         
             except Exception as e:
                 logger.error(f"Erro na injeção {payload}: {e}")

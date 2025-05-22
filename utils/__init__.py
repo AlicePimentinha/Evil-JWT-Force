@@ -1,28 +1,36 @@
 """
 EVIL_JWT_FORCE Utils Module
-
-Este pacote contém funções e classes utilitárias auxiliares utilizadas em diversos módulos do sistema:
-
-- helpers.py: Funções auxiliares gerais.
-- proxy_rotator.py: Gerenciador de rotação de proxies para requests.
-- osint_scraper.py: Scraper de dados para coleta OSINT.
-- request_builder.py: Construtor de requisições personalizadas.
+Este pacote contém funções e classes utilitárias auxiliares.
 """
+
+from .helpers import (
+    save_to_file,
+    read_lines,
+    write_lines,
+    generate_nonce,
+    get_current_timestamp,
+    formatted_time,
+    log_format
+)
+from .proxy_rotator import ProxyRotator
+from .osint_scraper import OSINTScraper
+from .request_builder import RequestBuilder
+from .logger import setup_logger
+
+__all__ = [
+    "save_to_file",
+    "read_lines",
+    "write_lines",
+    "generate_nonce",
+    "get_current_timestamp",
+    "formatted_time",
+    "log_format",
+    "ProxyRotator",
+    "OSINTScraper",
+    "RequestBuilder",
+    "setup_logger"
+]
 
 __version__ = "1.0.0"
 __author__ = "EVIL_JWT_FORCE Team"
 __license__ = "MIT"
-
-from . import (
-    helpers,
-    proxy_rotator,
-    osint_scraper,
-    request_builder
-)
-
-__all__ = [
-    "helpers",
-    "proxy_rotator",
-    "osint_scraper",
-    "request_builder"
-]

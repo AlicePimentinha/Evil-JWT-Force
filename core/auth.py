@@ -1,22 +1,20 @@
-import httpx
+import jwt
+import requests
 import json
-import re
-from typing import List, Tuple
+import sys
 from pathlib import Path
-from utils.helpers import save_to_file
-from utils.request_builder import build_headers, build_payload
-from config.constants import VALID_CREDS_FILE, INVALID_CREDS_FILE
+from typing import List, Tuple  # Adicionando a importação necessária
 
-HEADERS = {
-    "User-Agent": "EVIL-JWT-FORCE/1.0",
-    "Accept": "application/json"
-}
+# Corrigindo a importação usando caminho relativo
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from utils.helpers import save_to_file
 
 class Authenticator:
-    def __init__(self, url, proxy=None):
-        self.url = url
-        self.client = httpx.Client(proxies=proxy, verify=False, timeout=15.0)
-        
+    def __init__(self, target_url, credentials_file=None):
+        self.target_url = target_url
+        self.credentials_file = credentials_file
+        self.session = requests.Session()
+    
     def authenticate(self, username: str, password: str, auth_method: str = "jwt") -> bool:
         try:
             headers = build_headers()

@@ -1,24 +1,28 @@
 """
-EVIL_JWT_FORCE - Configuração Centralizada
-
-Este pacote gerencia todas as configurações globais, como caminhos de diretório, parâmetros padrão,
-e flags de execução. Pode ser expandido para suporte a arquivos .env, .json ou .yaml.
+EVIL_JWT_FORCE Config Module
+Configurações e constantes globais do projeto
 """
 
-import os
+from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Diretórios base
+BASE_DIR = Path(__file__).resolve().parent.parent
+CONFIG_DIR = BASE_DIR / "config"
+LOG_DIR = BASE_DIR / "logs"
+OUTPUT_DIR = BASE_DIR / "output"
+REPORTS_DIR = BASE_DIR / "reports"
 
-CONFIG = {
-    "JWT_SECRET_WORDLIST": os.path.join(BASE_DIR, "jwt_secrets.txt"),
-    "DEFAULT_ENCODING": "utf-8",
-    "LOG_LEVEL": "DEBUG",
-    "TIMEZONE": "UTC",
-    "AES_IV": b"\x00" * 16  # Pode ser sobrescrito por config externa
+# Configurações de timeout
+DEFAULT_TIMEOUT = 30
+MAX_RETRIES = 3
+
+# Cores para logging
+COLORS = {
+    'SUCCESS': '\033[92m',
+    'WARNING': '\033[93m',
+    'ERROR': '\033[91m',
+    'INFO': '\033[94m',
+    'RESET': '\033[0m'
 }
 
-def get_config(key, default=None):
-    return CONFIG.get(key, default)
-
-def set_config(key, value):
-    CONFIG[key] = value
+__version__ = "1.0.0"

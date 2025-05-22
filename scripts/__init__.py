@@ -1,20 +1,16 @@
 """
-EVIL_JWT_FORCE - Scripts Package
-
-Scripts utilitários que podem ser usados de forma independente para tarefas específicas,
-como análise offline, conversão de tokens, scraping autônomo, entre outros.
+EVIL_JWT_FORCE Scripts Package
+Scripts utilitários para tarefas específicas
 """
 
 import os
 import sys
+from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 def list_available_scripts():
-    """Lista os scripts disponíveis no pacote."""
+    """Lista os scripts disponíveis no pacote"""
     return [f for f in os.listdir(BASE_DIR) if f.endswith(".py") and f != "__init__.py"]
 
-if __name__ == "__main__":
-    print("Scripts disponíveis:")
-    for script in list_available_scripts():
-        print(f"- {script}")
+__version__ = "1.0.0"
