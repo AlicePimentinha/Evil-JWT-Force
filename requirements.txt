@@ -38,4 +38,3 @@ censys>=2.2.0
 dnspython>=2.3.0
 python-whois>=0.8.0
 spyse-python>=2.2.3
-theHarvester>=4.2.0

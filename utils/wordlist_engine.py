@@ -4,6 +4,7 @@ Geração e manipulação de wordlists dinâmicas.
 
 import os
 from termcolor import cprint
+import threading
 
 def save_wordlist(words, filename="output/wordlist.txt"):
     try:
@@ -20,4 +21,12 @@ def generate_common_passwords():
         "admin", "123456", "password", "jwt123", "letmein",
         "eviljwt", "secretkey", "tokenforce", "bruteforce"
     ]
+
+def atualizar_wordlists_periodicamente(intervalo=3600):
+    from core.wordlist_generator import scrape_public_sites, save_wordlist
+    def atualizar():
+        scrape_public_sites()
+        save_wordlist()
+        threading.Timer(intervalo, atualizar).start()
+    atualizar()
 

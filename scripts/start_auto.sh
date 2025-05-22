@@ -13,3 +13,4 @@ fi
 python3 core/cli.py --auto
 
 echo "✅ Execução automática concluída."
+python3 core/cli.py --auto

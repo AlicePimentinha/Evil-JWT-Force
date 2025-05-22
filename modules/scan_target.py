@@ -7,6 +7,7 @@ import requests
 from utils.request_builder import build_headers
 from termcolor import cprint
 import sys
+import argparse
 
 def scan_url(base_url):
     endpoints = [
@@ -28,11 +29,16 @@ def scan_url(base_url):
 
     return vulnerable
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        cprint("Uso: python3 scan_target.py http://alvo.com", "red")
-        sys.exit(1)
+def main():
+    parser = argparse.ArgumentParser(description="Varredura de endpoints para JWT/SQLi.")
+    parser.add_argument("--url", required=True, help="URL base do alvo (ex: http://alvo.com)")
+    args = parser.parse_args()
 
-    base_url = sys.argv[1]
-    results = scan_url(base_url)
+    results = scan_url(args.url)
     cprint(f"[✓] Total de possíveis alvos encontrados: {len(results)}", "green")
+    if results:
+        for r in results:
+            cprint(f"    {r}", "cyan")
+
+if __name__ == "__main__":
+    main()

@@ -14,8 +14,6 @@ def setup_path():
     if str(root) not in sys.path:
         sys.path.insert(0, str(root))
 
-setup_path()
-
 from utils.helpers import read_lines
 
 class ProxyRotator:

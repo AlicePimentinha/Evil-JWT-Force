@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from utils.crypto import aes_decrypt
 from utils.helpers import save_to_file
+from utils.logger import logger
 
 class JWTBruteforcer:
     def __init__(self, token, wordlist=None):
@@ -18,7 +19,7 @@ class JWTBruteforcer:
 
     def start(self):
         if not self.wordlist:
-            print("No wordlist provided")
+            logger.warning("Nenhuma wordlist fornecida")
             return
         
         for word in self.wordlist:
@@ -26,18 +27,18 @@ class JWTBruteforcer:
                 decoded = jwt.decode(self.token, word, algorithms=['HS256'])
                 self.success = True
                 self.key = word
-                print(f"[+] Found valid key: {word}")
-                print(f"[+] Decoded token: {decoded}")
+                logger.success(f"[+] Chave válida encontrada: {word}")
+                logger.info(f"[+] Token decodificado: {decoded}")
                 save_to_file('found_key.txt', word)
                 break
             except jwt.InvalidTokenError:
                 continue
             except Exception as e:
-                print(f"[-] Error: {e}")
+                logger.error(f"[-] Erro: {e}")
                 continue
 
         if not self.success:
-            print("[-] No valid key found")
+            logger.warning("[-] Nenhuma chave válida encontrada")
 
 if __name__ == "__main__":
     # Example usage

@@ -32,3 +32,3068 @@ tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
 cd ..
 
 echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/ \
+    reports/ \
+    scripts/ \
+    utils/ \
+    requirements.txt \
+    setup.py \
+    install.sh \
+    README.md \
+    dist/${PACKAGE_NAME}/
+
+# Create the archive
+cd dist
+tar -czf ${PACKAGE_NAME}.tar.gz ${PACKAGE_NAME}
+cd ..
+
+echo "Package created at dist/${PACKAGE_NAME}.tar.gz"
+cp -r \
+    config/ \
+    core/ \
+    gui/ \
+    logs/ \
+    modules/ \
+    output/

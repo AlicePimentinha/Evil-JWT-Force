@@ -9,6 +9,7 @@ import random
 import string
 import logging
 from datetime import datetime
+import re
 from pathlib import Path
 from typing import List, Optional, Union
 
@@ -141,3 +142,26 @@ def clean_string(text: str) -> str:
         str: Texto limpo
     """
     return ''.join(c for c in text if c.isalnum() or c in '._-')
+
+def is_valid_url(url: str) -> bool:
+    regex = re.compile(
+        r'^(?:http|https)://'  # http:// ou https://
+        r'(?:\S+(?::\S*)?@)?'  # user:pass@
+        r'(?:[A-Za-z0-9.-]+|\[[A-Fa-f0-9:]+\])'  # domínio
+        r'(?::\d+)?'  # porta
+        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+    return re.match(regex, url) is not None
+
+def safe_write_file(path, content):
+    try:
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(content + "\n")
+    except PermissionError as e:
+        from utils.logger import logger
+        logger.error(f"Permissão negada ao gravar em {path}: {e}")
+        raise
+    except Exception as e:
+        from utils.logger import logger
+        logger.error(f"Erro ao gravar em {path}: {e}")
+        raise

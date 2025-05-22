@@ -182,7 +182,8 @@ class ModuleDialog:
             "aes_decrypt.py": "core/aes_decrypt.py",
             "sql_injector.py": "core/sql_injector.py",
             "sentry_simulator.py": "core/sentry_simulator.py",
-            "report.py": "core/report.py"
+            "report.py": "core/report.py",
+            "novo_modulo.py": "core/novo_modulo.py"
         }
         script_path = script_map.get(self.module_file, None)
         if script_path:
@@ -461,6 +462,12 @@ class AutoDialog:
         )
         self.url_entry.grid(row=0, column=1, pady=5, padx=10, sticky='w')
 
+        # Área de saída (tk.Text) para mostrar logs/resultados em tempo real
+        self.output_text = tk.Text(self.main_frame, bg="#181818", fg="#00FF00", font=("Consolas", 11), height=8, width=60)
+        self.output_text.grid(row=2, column=0, columnspan=2, pady=(10, 0), sticky='nsew')
+        self.main_frame.grid_rowconfigure(2, weight=1)
+        self.main_frame.grid_columnconfigure(1, weight=1)
+
         # Botão de ação centralizado abaixo dos campos
         self.action_frame = tk.Frame(self.main_frame, bg="#1e1e1e")
         self.action_frame.grid(row=1, column=0, columnspan=2, pady=(20,0))
@@ -498,8 +505,33 @@ class AutoDialog:
             messagebox.showerror("Erro", "Por favor, insira uma URL válida")
             return
         self.save_url(url)
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
+        # Executa o backend real e mostra o resultado em tempo real no tk.Text
+        try:
+            script_path = os.path.join(os.path.dirname(__file__), "..", "modules", "auto_scanner.py")
+            script_path = os.path.abspath(script_path)
+            # Executa o script Python passando a URL como argumento
+            process = subprocess.Popen(
+                ["python", script_path, "--url", url],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+            self.output_text.delete(1.0, tk.END)
+            for line in iter(process.stdout.readline, ''):
+                if not line:
+                    break
+                self.output_text.insert(tk.END, line)
+                self.output_text.see(tk.END)
+                self.output_text.update()
+            process.stdout.close()
+            process.wait()
+            if process.returncode == 0:
+                self.output_text.insert(tk.END, "\n[✔] Ataque automático finalizado com sucesso.\n")
+            else:
+                self.output_text.insert(tk.END, f"\n[✖] Erro na execução do backend (código {process.returncode}).\n")
+        except Exception as e:
+            self.output_text.insert(tk.END, f"\n[✖] Falha ao executar o backend: {e}\n")
+        # Não fecha o diálogo automaticamente, deixa o usuário analisar a saída
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -655,8 +687,33 @@ class AutoDialog:
             messagebox.showerror("Erro", "Por favor, insira uma URL válida")
             return
         self.save_url(url)
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
+        # Executa o backend real e mostra o resultado em tempo real no tk.Text
+        try:
+            script_path = os.path.join(os.path.dirname(__file__), "..", "modules", "auto_scanner.py")
+            script_path = os.path.abspath(script_path)
+            # Executa o script Python passando a URL como argumento
+            process = subprocess.Popen(
+                ["python", script_path, "--url", url],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+            self.output_text.delete(1.0, tk.END)
+            for line in iter(process.stdout.readline, ''):
+                if not line:
+                    break
+                self.output_text.insert(tk.END, line)
+                self.output_text.see(tk.END)
+                self.output_text.update()
+            process.stdout.close()
+            process.wait()
+            if process.returncode == 0:
+                self.output_text.insert(tk.END, "\n[✔] Ataque automático finalizado com sucesso.\n")
+            else:
+                self.output_text.insert(tk.END, f"\n[✖] Erro na execução do backend (código {process.returncode}).\n")
+        except Exception as e:
+            self.output_text.insert(tk.END, f"\n[✖] Falha ao executar o backend: {e}\n")
+        # Não fecha o diálogo automaticamente, deixa o usuário analisar a saída
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -812,8 +869,33 @@ class AutoDialog:
             messagebox.showerror("Erro", "Por favor, insira uma URL válida")
             return
         self.save_url(url)
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
+        # Executa o backend real e mostra o resultado em tempo real no tk.Text
+        try:
+            script_path = os.path.join(os.path.dirname(__file__), "..", "modules", "auto_scanner.py")
+            script_path = os.path.abspath(script_path)
+            # Executa o script Python passando a URL como argumento
+            process = subprocess.Popen(
+                ["python", script_path, "--url", url],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+            self.output_text.delete(1.0, tk.END)
+            for line in iter(process.stdout.readline, ''):
+                if not line:
+                    break
+                self.output_text.insert(tk.END, line)
+                self.output_text.see(tk.END)
+                self.output_text.update()
+            process.stdout.close()
+            process.wait()
+            if process.returncode == 0:
+                self.output_text.insert(tk.END, "\n[✔] Ataque automático finalizado com sucesso.\n")
+            else:
+                self.output_text.insert(tk.END, f"\n[✖] Erro na execução do backend (código {process.returncode}).\n")
+        except Exception as e:
+            self.output_text.insert(tk.END, f"\n[✖] Falha ao executar o backend: {e}\n")
+        # Não fecha o diálogo automaticamente, deixa o usuário analisar a saída
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -969,8 +1051,33 @@ class AutoDialog:
             messagebox.showerror("Erro", "Por favor, insira uma URL válida")
             return
         self.save_url(url)
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
+        # Executa o backend real e mostra o resultado em tempo real no tk.Text
+        try:
+            script_path = os.path.join(os.path.dirname(__file__), "..", "modules", "auto_scanner.py")
+            script_path = os.path.abspath(script_path)
+            # Executa o script Python passando a URL como argumento
+            process = subprocess.Popen(
+                ["python", script_path, "--url", url],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+            self.output_text.delete(1.0, tk.END)
+            for line in iter(process.stdout.readline, ''):
+                if not line:
+                    break
+                self.output_text.insert(tk.END, line)
+                self.output_text.see(tk.END)
+                self.output_text.update()
+            process.stdout.close()
+            process.wait()
+            if process.returncode == 0:
+                self.output_text.insert(tk.END, "\n[✔] Ataque automático finalizado com sucesso.\n")
+            else:
+                self.output_text.insert(tk.END, f"\n[✖] Erro na execução do backend (código {process.returncode}).\n")
+        except Exception as e:
+            self.output_text.insert(tk.END, f"\n[✖] Falha ao executar o backend: {e}\n")
+        # Não fecha o diálogo automaticamente, deixa o usuário analisar a saída
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -1126,8 +1233,33 @@ class AutoDialog:
             messagebox.showerror("Erro", "Por favor, insira uma URL válida")
             return
         self.save_url(url)
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
+        # Executa o backend real e mostra o resultado em tempo real no tk.Text
+        try:
+            script_path = os.path.join(os.path.dirname(__file__), "..", "modules", "auto_scanner.py")
+            script_path = os.path.abspath(script_path)
+            # Executa o script Python passando a URL como argumento
+            process = subprocess.Popen(
+                ["python", script_path, "--url", url],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+            self.output_text.delete(1.0, tk.END)
+            for line in iter(process.stdout.readline, ''):
+                if not line:
+                    break
+                self.output_text.insert(tk.END, line)
+                self.output_text.see(tk.END)
+                self.output_text.update()
+            process.stdout.close()
+            process.wait()
+            if process.returncode == 0:
+                self.output_text.insert(tk.END, "\n[✔] Ataque automático finalizado com sucesso.\n")
+            else:
+                self.output_text.insert(tk.END, f"\n[✖] Erro na execução do backend (código {process.returncode}).\n")
+        except Exception as e:
+            self.output_text.insert(tk.END, f"\n[✖] Falha ao executar o backend: {e}\n")
+        # Não fecha o diálogo automaticamente, deixa o usuário analisar a saída
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -1283,8 +1415,33 @@ class AutoDialog:
             messagebox.showerror("Erro", "Por favor, insira uma URL válida")
             return
         self.save_url(url)
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
+        # Executa o backend real e mostra o resultado em tempo real no tk.Text
+        try:
+            script_path = os.path.join(os.path.dirname(__file__), "..", "modules", "auto_scanner.py")
+            script_path = os.path.abspath(script_path)
+            # Executa o script Python passando a URL como argumento
+            process = subprocess.Popen(
+                ["python", script_path, "--url", url],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+            self.output_text.delete(1.0, tk.END)
+            for line in iter(process.stdout.readline, ''):
+                if not line:
+                    break
+                self.output_text.insert(tk.END, line)
+                self.output_text.see(tk.END)
+                self.output_text.update()
+            process.stdout.close()
+            process.wait()
+            if process.returncode == 0:
+                self.output_text.insert(tk.END, "\n[✔] Ataque automático finalizado com sucesso.\n")
+            else:
+                self.output_text.insert(tk.END, f"\n[✖] Erro na execução do backend (código {process.returncode}).\n")
+        except Exception as e:
+            self.output_text.insert(tk.END, f"\n[✖] Falha ao executar o backend: {e}\n")
+        # Não fecha o diálogo automaticamente, deixa o usuário analisar a saída
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -1440,8 +1597,33 @@ class AutoDialog:
             messagebox.showerror("Erro", "Por favor, insira uma URL válida")
             return
         self.save_url(url)
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
-        messagebox.showinfo("Ataque Automático", f"Iniciando ataque automático na URL: {url}")
+        # Executa o backend real e mostra o resultado em tempo real no tk.Text
+        try:
+            script_path = os.path.join(os.path.dirname(__file__), "..", "modules", "auto_scanner.py")
+            script_path = os.path.abspath(script_path)
+            # Executa o script Python passando a URL como argumento
+            process = subprocess.Popen(
+                ["python", script_path, "--url", url],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
+            self.output_text.delete(1.0, tk.END)
+            for line in iter(process.stdout.readline, ''):
+                if not line:
+                    break
+                self.output_text.insert(tk.END, line)
+                self.output_text.see(tk.END)
+                self.output_text.update()
+            process.stdout.close()
+            process.wait()
+            if process.returncode == 0:
+                self.output_text.insert(tk.END, "\n[✔] Ataque automático finalizado com sucesso.\n")
+            else:
+                self.output_text.insert(tk.END, f"\n[✖] Erro na execução do backend (código {process.returncode}).\n")
+        except Exception as e:
+            self.output_text.insert(tk.END, f"\n[✖] Falha ao executar o backend: {e}\n")
+        # Não fecha o diálogo automaticamente, deixa o usuário analisar a saída
 
 if __name__ == "__main__":
     root = tk.Tk()

@@ -15,3 +15,26 @@ pip3 install -r requirements.txt
 sudo ln -s $(pwd)/core/cli.py /usr/local/bin/evil-jwt-force
 
 echo "Installation complete! You can now run 'evil-jwt-force' from anywhere."
+groupadd
+groupdel
+groupmod
+ifdown
+ifup
+killall
+lvremove
+mount
+passwd
+pkill
+pvremove
+reboot
+route
+service
+shutdown
+su
+sysctl
+systemctl
+umount
+useradd
+userdel
+usermod
+vgremove
