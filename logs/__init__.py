@@ -20,7 +20,8 @@ def get_logger(name="EVIL_JWT_FORCE"):
     formatter = logging.Formatter('[%(asctime)s] %(levelname)s: %(message)s')
     file_handler.setFormatter(formatter)
 
-    if not logger.hasHandlers():
+    # Garante que apenas um handler de arquivo é adicionado
+    if not any(isinstance(h, logging.FileHandler) and h.baseFilename == file_handler.baseFilename for h in logger.handlers):
         logger.addHandler(file_handler)
 
     return logger

@@ -1,111 +1,190 @@
 import requests
-from bs4 import BeautifulSoup
-from concurrent.futures import ThreadPoolExecutor
-from fake_useragent import UserAgent
-import time
 import re
+import logging
+import threading
+from queue import Queue
+from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
+
 from utils.logger import logger
+
+SOCIAL_PLATFORMS = [
+    "facebook.com", "instagram.com", "twitter.com", "x.com", "linkedin.com", "youtube.com", "tiktok.com",
+    "reddit.com", "pinterest.com", "tumblr.com", "medium.com", "vk.com", "weibo.com", "bilibili.com",
+    "line.me", "kakao.com", "naver.com", "qq.com", "baidu.com", "douyin.com", "zhihu.com", "telegram.org"
+]
+
+GLOBAL_DOMAINS = [
+    ".com", ".org", ".gov", ".edu", ".net", ".info", ".asia", ".jp", ".cn", ".kr", ".tw", ".hk", ".sg", ".in", ".ru"
+]
+
+SEARCH_ENGINES = [
+    "https://www.google.com/search?q=",
+    "https://www.bing.com/search?q=",
+    "https://duckduckgo.com/html/?q=",
+    "https://search.yahoo.com/search?p="
+]
+
+HEADERS = {
+    "User-Agent": UserAgent().random
+}
+
+def extract_emails(text):
+    return re.findall(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", text)
+
+def extract_domains(text):
+    return re.findall(r"https?://([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})", text)
+
+def extract_usernames(text):
+    return re.findall(r"@([a-zA-Z0-9_]{3,32})", text)
+
+def extract_keywords(text):
+    words = re.findall(r"\b[a-zA-Z0-9_-]{5,32}\b", text)
+    return list(set(words))
+
+def search_engine_scrape(query, limit=10):
+    results = []
+    for engine in SEARCH_ENGINES:
+        try:
+            url = f"{engine}{query}"
+            resp = requests.get(url, headers=HEADERS, timeout=10)
+            soup = BeautifulSoup(resp.text, "html.parser")
+            links = [a.get("href") for a in soup.find_all("a", href=True)]
+            for link in links:
+                if any(domain in link for domain in GLOBAL_DOMAINS):
+                    results.append(link)
+            if len(results) >= limit:
+                break
+        except Exception as e:
+            logger.warning(f"Erro ao buscar em {engine}: {e}")
+    return results[:limit]
+
+def social_media_scrape(query):
+    results = []
+    for platform in SOCIAL_PLATFORMS:
+        try:
+            url = f"https://www.google.com/search?q=site:{platform}+{query}"
+            resp = requests.get(url, headers=HEADERS, timeout=10)
+            soup = BeautifulSoup(resp.text, "html.parser")
+            links = [a.get("href") for a in soup.find_all("a", href=True)]
+            for link in links:
+                if platform in link:
+                    results.append(link)
+        except Exception as e:
+            logger.warning(f"Erro ao buscar em {platform}: {e}")
+    return results
+
+def gov_org_scrape(query):
+    results = []
+    for tld in [".gov", ".org", ".edu"]:
+        try:
+            url = f"https://www.google.com/search?q=site:{tld}+{query}"
+            resp = requests.get(url, headers=HEADERS, timeout=10)
+            soup = BeautifulSoup(resp.text, "html.parser")
+            links = [a.get("href") for a in soup.find_all("a", href=True)]
+            for link in links:
+                if tld in link:
+                    results.append(link)
+        except Exception as e:
+            logger.warning(f"Erro ao buscar em {tld}: {e}")
+    return results
+
+def asia_domain_scrape(query):
+    results = []
+    for tld in [".asia", ".jp", ".cn", ".kr", ".tw", ".hk", ".sg", ".in"]:
+        try:
+            url = f"https://www.google.com/search?q=site:{tld}+{query}"
+            resp = requests.get(url, headers=HEADERS, timeout=10)
+            soup = BeautifulSoup(resp.text, "html.parser")
+            links = [a.get("href") for a in soup.find_all("a", href=True)]
+            for link in links:
+                if tld in link:
+                    results.append(link)
+        except Exception as e:
+            logger.warning(f"Erro ao buscar em {tld}: {e}")
+    return results
+
+def leak_check(query):
+    leaks = []
+    try:
+        url = f"https://www.google.com/search?q={query}+site:pastebin.com"
+        resp = requests.get(url, headers=HEADERS, timeout=10)
+        soup = BeautifulSoup(resp.text, "html.parser")
+        links = [a.get("href") for a in soup.find_all("a", href=True)]
+        for link in links:
+            if "pastebin.com" in link:
+                leaks.append(link)
+    except Exception as e:
+        logger.warning(f"Erro ao buscar leaks: {e}")
+    return leaks
+
+def parallel_scrape(queries, scrape_func, results, max_threads=8):
+    q = Queue()
+    for query in queries:
+        q.put(query)
+    def worker():
+        while not q.empty():
+            query = q.get()
+            try:
+                res = scrape_func(query)
+                results.extend(res)
+            except Exception as e:
+                logger.warning(f"Erro no worker: {e}")
+            q.task_done()
+    threads = []
+    for _ in range(max_threads):
+        t = threading.Thread(target=worker)
+        t.daemon = True
+        t.start()
+        threads.append(t)
+    q.join()
 
 class OSINTScraper:
     def __init__(self, target_domain=None):
         self.target_domain = target_domain
-        self.ua = UserAgent()
         self.collected_data = set()
-        self.social_platforms = {
-            'facebook.com': 'Facebook',
-            'linkedin.com': 'LinkedIn',
-            'twitter.com': 'Twitter',
-            'instagram.com': 'Instagram',
-            'github.com': 'GitHub',
-            'gitlab.com': 'GitLab',
-            'reddit.com': 'Reddit',
-            'youtube.com': 'YouTube',
-            'tiktok.com': 'TikTok',
-            'threads.net': 'Threads'
-        }
-        
-    def search_duckduckgo(self, query, max_results=100):
-        base_url = "https://html.duckduckgo.com/html/"
-        params = {
-            'q': query,
-            'kl': 'us-en'
-        }
-        try:
-            response = requests.get(
-                base_url,
-                params=params,
-                headers={'User-Agent': self.ua.random}
-            )
-            soup = BeautifulSoup(response.text, 'html.parser')
-            results = soup.find_all('div', class_='result__body')
-            return [result.get_text() for result in results[:max_results]]
-        except Exception as e:
-            logger.error(f"Erro ao buscar no DuckDuckGo: {e}")
-            return []
-
-    def search_gov_org_sites(self, query):
-        sites = [
-            'site:.gov', 'site:.org', 'site:.edu',
-            'site:.mil', 'site:.int', 'site:.gc.ca',
-            'site:.gov.uk', 'site:.europa.eu'
-        ]
-        results = []
-        for site in sites:
-            search_query = f"{query} {site}"
-            results.extend(self.search_duckduckgo(search_query))
-            time.sleep(2)  # Respeitar limites de taxa
-        return results
-
-    def scrape_social_media(self, term):
-        results = []
-        for platform_url in self.social_platforms.keys():
-            query = f"site:{platform_url} {term}"
-            platform_results = self.search_duckduckgo(query, max_results=20)
-            results.extend(platform_results)
-            time.sleep(2)
-        return results
-
-    def extract_potential_secrets(self, text):
-        patterns = {
-            'emails': r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
-            'api_keys': r'[a-zA-Z0-9_-]{20,40}',
-            'jwt_patterns': r'eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*',
-            'usernames': r'(?:user|username|login|admin)[=:]\s*["\']?([a-zA-Z0-9_-]+)',
-            'urls': r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
-        }
-        
-        findings = {}
-        for pattern_name, pattern in patterns.items():
-            matches = re.findall(pattern, text)
-            if matches:
-                findings[pattern_name] = list(set(matches))
-        return findings
 
     def analyze_target(self, terms, output_file="output/osint_results.txt"):
-        all_results = []
-        
-        # Busca em sites governamentais e organizacionais
-        gov_org_results = self.search_gov_org_sites(terms)
-        all_results.extend(gov_org_results)
-        
-        # Busca em redes sociais
-        social_results = self.scrape_social_media(terms)
-        all_results.extend(social_results)
-        
-        # Extrair e analisar resultados
-        findings = {}
-        for result in all_results:
-            extracted = self.extract_potential_secrets(result)
-            for key, values in extracted.items():
-                if key not in findings:
-                    findings[key] = set()
-                findings[key].update(values)
-        
+        results = {
+            "emails": set(),
+            "domains": set(),
+            "usernames": set(),
+            "keywords": set(),
+            "links": set(),
+            "leaks": set()
+        }
+        queries = [terms]
+        # Busca paralela em mecanismos de busca globais
+        search_results = []
+        parallel_scrape(queries, search_engine_scrape, search_results)
+        # Busca paralela em redes sociais
+        social_results = []
+        parallel_scrape(queries, social_media_scrape, social_results)
+        # Busca paralela em domínios .gov, .org, .edu
+        gov_org_results = []
+        parallel_scrape(queries, gov_org_scrape, gov_org_results)
+        # Busca paralela em domínios asiáticos
+        asia_results = []
+        parallel_scrape(queries, asia_domain_scrape, asia_results)
+        # Busca por leaks
+        leak_results = []
+        parallel_scrape(queries, leak_check, leak_results)
+        # Extração de dados
+        all_text = "\n".join(search_results + social_results + gov_org_results + asia_results + leak_results)
+        results["emails"].update(extract_emails(all_text))
+        results["domains"].update(extract_domains(all_text))
+        results["usernames"].update(extract_usernames(all_text))
+        results["keywords"].update(extract_keywords(all_text))
+        results["links"].update(search_results + social_results + gov_org_results + asia_results)
+        results["leaks"].update(leak_results)
+        # Conversão para lista
+        for k in results:
+            results[k] = list(results[k])
         # Salvar resultados
         with open(output_file, 'w', encoding='utf-8') as f:
-            for category, items in findings.items():
+            for category, items in results.items():
                 f.write(f"\n=== {category.upper()} ===\n")
                 for item in sorted(items):
                     f.write(f"{item}\n")
-        
-        return findings
+        logger.info(f"OSINT coletado para {terms}: {results}")
+        return results

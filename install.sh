@@ -1,40 +1,32 @@
 #!/bin/bash
 
-# Create necessary directories
+set -e
+
+echo "[*] Criando diretórios necessários..."
 mkdir -p logs output reports
 
-# Set proper permissions
-chmod +x scripts/*.sh
-chmod +x core/cli.py
+echo "[*] Ajustando permissões de scripts e módulos..."
+find scripts -type f -name "*.sh" -exec chmod +x {} \;
+find core -type f -name "*.py" -exec chmod +x {} \;
 chmod 755 -R .
 
-# Install Python dependencies
-pip3 install -r requirements.txt
+echo "[*] Verificando Python 3 e pip..."
+if ! command -v python3 >/dev/null 2>&1; then
+    echo "[ERRO] Python 3 não encontrado. Instale antes de continuar."
+    exit 1
+fi
+if ! command -v pip3 >/dev/null 2>&1; then
+    echo "[ERRO] pip3 não encontrado. Instale antes de continuar."
+    exit 1
+fi
 
-# Create symbolic link
-sudo ln -s $(pwd)/core/cli.py /usr/local/bin/evil-jwt-force
+echo "[*] Criando ambiente virtual e instalando dependências..."
+python3 install_deps.py
 
-echo "Installation complete! You can now run 'evil-jwt-force' from anywhere."
-groupadd
-groupdel
-groupmod
-ifdown
-ifup
-killall
-lvremove
-mount
-passwd
-pkill
-pvremove
-reboot
-route
-service
-shutdown
-su
-sysctl
-systemctl
-umount
-useradd
-userdel
-usermod
-vgremove
+echo "[*] Criando link simbólico global para o CLI..."
+if [ -L /usr/local/bin/evil-jwt-force ]; then
+    sudo rm /usr/local/bin/evil-jwt-force
+fi
+sudo ln -s "$(pwd)/core/cli.py" /usr/local/bin/evil-jwt-force
+
+echo "[*] Instalação concluída! Você pode rodar 'evil-jwt-force' de qualquer lugar."

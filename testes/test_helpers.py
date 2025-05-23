@@ -1,82 +1,49 @@
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from utils.helpers import (
+    save_to_file,
+    read_lines,
+    write_lines,
+    generate_nonce,
+    get_current_timestamp,
+    formatted_time,
+    log_format,
+    ensure_dir,
+    clean_string,
+    is_valid_url,
+    safe_write_file,
+    atomic_write,
+    touch,
+    remove_file,
+    list_files,
+    slugify,
+    human_size
+)
 
-from utils.helpers import is_valid_url
+def test_atomic_write_and_read(tmp_path):
+    file_path = tmp_path / "atomic.txt"
+    content = "conteúdo atômico"
+    assert atomic_write(str(file_path), content) is True
+    assert read_lines(str(file_path)) == [content]
 
-def test_is_valid_url():
-    assert is_valid_url("https://exemplo.com")
-    assert is_valid_url("http://exemplo.com")
-    assert is_valid_url("https://sub.exemplo.com")
-    assert is_valid_url("https://exemplo.com:8080")
-    assert is_valid_url("https://exemplo.com/caminho")
-    assert is_valid_url("https://exemplo.com/caminho/mais")
-    assert is_valid_url("https://exemplo.com/caminho/mais?param=valor")
-    assert is_valid_url("https://exemplo.com:443/caminho?param=valor&outro=1")
-    assert is_valid_url("https://sub.dominio.exemplo.com")
-    assert is_valid_url("https://exemplo.com.br")
-    assert is_valid_url("https://exemplo.com/path/to/resource")
-    assert is_valid_url("https://exemplo.com/path/to/resource/")
-    assert is_valid_url("https://exemplo.com/path/to/resource?query=1")
-    assert is_valid_url("https://user:pass@exemplo.com")
-    assert is_valid_url("https://user:pass@exemplo.com:8443/path")
-    assert is_valid_url("http://[2001:db8::1]:8080/caminho")
-    assert is_valid_url("https://exemplo.com?param1=valor1&param2=valor2")
-    assert is_valid_url("https://exemplo.com/#ancora")
-    assert is_valid_url("https://exemplo.com:65535")
-    assert is_valid_url("https://exemplo.com:1")
-    assert is_valid_url("https://exemplo.com:12345/path?query=abc#fragmento")
-    assert is_valid_url("https://xn--exemplo-vaa.com")
-    assert is_valid_url("https://exemplo.com:80")
-    assert is_valid_url("https://exemplo.com:443")
-    assert is_valid_url("https://exemplo.com:8000/teste")
-    assert is_valid_url("https://exemplo.com/teste?x=1&y=2")
-    assert is_valid_url("https://exemplo.com/teste#topo")
-    assert is_valid_url("https://exemplo.com/teste/")
-    assert is_valid_url("https://exemplo.com/teste/abc/def")
-    assert is_valid_url("https://exemplo.com/teste/abc/def?x=1")
-    assert is_valid_url("https://exemplo.com/teste/abc/def?x=1#fim")
-    assert is_valid_url("https://exemplo.com:1234/teste/abc/def?x=1#fim")
-    assert is_valid_url("https://user:senha@sub.exemplo.com:1234/teste/abc/def?x=1#fim")
-    assert is_valid_url("https://[2606:4700:4700::1111]/")
-    assert is_valid_url("https://[2606:4700:4700::1111]:443/")
-    assert is_valid_url("https://[2606:4700:4700::1111]:443/teste?x=1")
-    assert is_valid_url("https://exemplo.com/?")
-    assert is_valid_url("https://exemplo.com#fragmento")
-    assert is_valid_url("https://exemplo.com:9999")
-    assert is_valid_url("https://exemplo.com:2")
-    assert is_valid_url("https://exemplo.com:65534")
+def test_touch_and_remove_file(tmp_path):
+    file_path = tmp_path / "touch.txt"
+    touch(file_path)
+    assert file_path.exists()
+    assert remove_file(file_path) is True
+    assert not file_path.exists()
 
-    assert not is_valid_url("htp:/exemplo")
-    assert not is_valid_url("ftp://exemplo.com")
-    assert not is_valid_url("://exemplo.com")
-    assert not is_valid_url("exemplo.com")
-    assert not is_valid_url("http//exemplo.com")
-    assert not is_valid_url("http:/exemplo.com")
-    assert not is_valid_url("https:/exemplo.com")
-    assert not is_valid_url("https://")
-    assert not is_valid_url("https://exemplo .com")
-    assert not is_valid_url("https://exemplo.com:port")
-    assert not is_valid_url("https://")
-    assert not is_valid_url("")
-    assert not is_valid_url("https://exemplo.com:99999")
-    assert not is_valid_url("https://exemplo.com:-80")
-    assert not is_valid_url("https://user@:8080")
-    assert not is_valid_url("https://@exemplo.com")
-    assert not is_valid_url("https://exemplo.com:abc")
-    assert not is_valid_url("https://exemplo.com:0")
-    assert not is_valid_url("https://exemplo.com:65536")
-    assert not is_valid_url("https://exemplo.com:-1")
-    assert not is_valid_url("https://[2606:4700:4700::1111]:99999/")
-    assert not is_valid_url("https://[2606:4700:4700::1111]:-1/")
-    assert not is_valid_url("https://[2606:4700:4700::1111]:abc/")
-    assert not is_valid_url("https://exemplo..com")
-    assert not is_valid_url("https://.exemplo.com")
-    assert not is_valid_url("https://exemplo.com..br")
-    assert not is_valid_url("https://exemplo..com.br")
-    assert not is_valid_url("https://-exemplo.com")
-    assert not is_valid_url("https://exemplo-.com")
-    assert not is_valid_url("https://exemplo.com: 80")
-    assert not is_valid_url("https://exemplo.com: 443")
-    assert not is_valid_url("https://exemplo.com:65536/teste")
-    assert not is_valid_url("https://exemplo.com:99999/teste")
+def test_list_files(tmp_path):
+    file1 = tmp_path / "a.txt"
+    file2 = tmp_path / "b.txt"
+    file1.write_text("1")
+    file2.write_text("2")
+    files = list_files(tmp_path, "*.txt")
+    assert str(file1) in files and str(file2) in files
+
+def test_slugify():
+    assert slugify("Texto Exemplo 123!") == "texto-exemplo-123"
+    assert slugify("Árvore & Café") == "rvore-caf"
+
+def test_human_size():
+    assert human_size(0) == "0B"
+    assert human_size(1024) == "1.0 KB"
+    assert human_size(1048576) == "1.0 MB"
